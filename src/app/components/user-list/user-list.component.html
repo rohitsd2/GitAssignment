@@ -1,0 +1,65 @@
+<!-- Top nav bar -->
+<nav class="navbar navbar-expand-sm bg-info">
+  <!-- Links -->
+  <ul class="navbar-nav select-input">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Filter
+      </a>
+      <div class="dropdown-menu">
+        <span class="dropdown-item" (click)="sortByAsec()">A-Z</span>
+        <span class="dropdown-item" (click)="sortByDesc()">Z-A</span>
+        <span class="dropdown-item" (click)="sortScore('asc')">score Asc</span>
+        <span class="dropdown-item" (click)="sortScore('desc')">Score Dsc</span>
+      </div>
+    </li>
+    <li>
+      <div class="search-input">
+        <input class="form-control" type="search" style="background-color: #FFF !important;" [(ngModel)]="searchTerm"
+          (ngModelChange)="getUserProfile()" placeholder="Search" aria-label="Search">
+      </div>
+    </li>
+  </ul>
+
+</nav>
+<!--! Top nav bar -->
+
+<!-- User Information -->
+<div class="row" *ngIf="userProfile">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <collapsible-list [type]="'accordion'">
+
+      <collapsible-list-item
+        *ngFor="let user of userProfile.items  | paginate: { itemsPerPage: 3, currentPage: p } ;let i = index">
+        <collapsible-header class="waves-effect user-card">
+          <div class="media block-update-card" (click)="getUserDetails(user.login)">
+            <a class="pull-left profile" href="#">
+              <img class="media-object update-card-MDimentions" src={{user.avatar_url}} alt="...">
+            </a>
+            <div class="media-body update-card-body">
+              <p>{{user.login}}</p>
+              <h4 class="media-heading">Profile url : {{user.url}}</h4>
+              <h4 class="media-heading">Score : {{user.score.toFixed(2)}}</h4>
+              <h4 class="media-heading">Data value</h4>
+            </div>
+
+          </div>
+          <button class="btn details-btn border details" (click)="getUserDetails(user.login)">Details</button>
+        </collapsible-header>
+        <collapsible-body [expanded]="false">
+          <p>Public Repositories :{{userDetails.length}}</p>
+          <div *ngFor="let details of userDetails">
+            <p>{{details.name}} :{{details.language}}</p>
+          </div>
+        </collapsible-body>
+      </collapsible-list-item>
+
+    </collapsible-list>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <div class="col-md-2"></div>
+
+</div>
+<!--! User Information -->

@@ -1,0 +1,60 @@
+.user-info {
+  margin: 5px 0px 5px 5px;
+}
+
+.profile {
+  margin-top:40px;
+}
+
+.user-card {
+  background-color: #FFF;
+}
+
+.block-update-card {
+  height: 100%;
+  border: 1px #FFFFFF solid;
+  width: 100%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.block-update-card .update-card-MDimentions {
+  width: 80px;
+  height: 80px;
+  border-radius :50px;
+}
+
+.block-update-card .update-card-body {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.block-update-card .update-card-body h4 {
+  color: #737373;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.details-btn {
+  border-style: solid;
+  border-width: 5px;
+}
+
+.select-input {
+  margin-top:15px !important;
+ margin-left:20em !important;
+}
+
+.search-input {
+  margin-left:20px!important;
+  margin-top:15px !important;
+  width:100% !important;
+  align:center !important;
+}
+
+.details {
+  float:right !important;
+  margin-bottom: 10px;
+}
